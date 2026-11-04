@@ -1,0 +1,26 @@
+package com.order
+import dev.techplant.drools.model.Order
+
+rule "rule_1"
+    salience 9
+    when
+        eval(true)
+    then
+        System.out.println("规则rule_1触发");
+end
+    
+rule "rule_2"
+    salience 10
+    when
+        eval(true)
+    then
+        System.out.println("规则rule_2触发");
+end
+
+rule "rule_3"
+    salience 8
+    when
+        eval(true)
+    then
+        System.out.println("规则rule_3触发");
+end

@@ -1,0 +1,21 @@
+package com.order
+import dev.techplant.drools.model.Order
+
+//默认议程组：无需设置焦点，直接执行
+rule "agenda_group_default"
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setScore(10);
+        System.out.println("成功匹配到规则：默认议程组（生效）");
+end
+
+//议程组 order_a：未设置焦点，不执行
+rule "agenda_group_a"
+    agenda-group "order_a"
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setScore(99);
+        System.out.println("成功匹配到规则：议程组 order_a（不应出现）");
+end

@@ -1,0 +1,12 @@
+package com.order
+import dev.techplant.drools.model.Order
+
+//定时器：插入事实后延迟 1 秒才执行，执行一次
+rule "timer_rule"
+    timer (int: 1s 1s)
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setScore($order.getScore() + 10);
+        System.out.println("成功匹配到规则：定时器到期执行（生效）");
+end

@@ -1,0 +1,12 @@
+package com.order
+import dev.techplant.drools.model.Order
+
+//议程组 order_a：设置焦点后执行
+rule "agenda_group_a_focused"
+    agenda-group "order_a"
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setScore(10);
+        System.out.println("成功匹配到规则：议程组 order_a（设置焦点后生效）");
+end

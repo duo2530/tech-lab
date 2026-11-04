@@ -7,7 +7,9 @@ rule "order_rule_1"
     when
         $order:Order(amout < 100)
     then
-        $order.setScore(0);
+        Order order = new Order();
+        order.setAmout(130);
+        insert(order);      //insert方法的作用是向工作内存中插入Fact对象，会导致相关规则重新匹配
         System.out.println("成功匹配到规则一：100元以下 不加分");
 end
 
@@ -34,6 +36,6 @@ rule "order_rule_4"
     when
         $order:Order(amout >= 1000)
     then
-         $order.setScore(1000);
-         System.out.println("成功匹配到规则四：1000元以上 加1000分");
+         $order.setScore(1100);
+         System.out.println("成功匹配到规则四：1000元以上 加1100分");
 end

@@ -1,0 +1,12 @@
+package com.order
+import dev.techplant.drools.model.Order
+
+//规则一：100元以下 不加分
+rule "order_rule_1"
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setAmout(50);
+        update($order)
+        System.out.println("成功匹配到规则一：100元以下 不加分");
+end

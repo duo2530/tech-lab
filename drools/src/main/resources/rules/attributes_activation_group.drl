@@ -1,0 +1,24 @@
+package com.order
+import dev.techplant.drools.model.Order
+
+//激活组：同组规则只会执行一条，优先级高的先执行，其余被取消
+rule "activation_group_high"
+    activation-group "order_group"
+    salience 10
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setScore(10);
+        System.out.println("成功匹配到规则：激活组高优先级（生效）");
+end
+
+//同组低优先级规则：被取消，不应出现
+rule "activation_group_low"
+    activation-group "order_group"
+    salience 1
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setScore(99);
+        System.out.println("成功匹配到规则：激活组低优先级（不应出现）");
+end

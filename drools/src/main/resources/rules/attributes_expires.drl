@@ -1,0 +1,22 @@
+package com.order
+import dev.techplant.drools.model.Order
+
+//过期日期未到：规则仍生效，加10分
+rule "date_expires_future"
+    date-expires "01-Jan-2099"
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setScore(10);
+        System.out.println("成功匹配到规则：过期日期未到（生效）");
+end
+
+//过期日期已过：规则失效，不执行
+rule "date_expires_past"
+    date-expires "01-Jan-2000"
+    when
+        $order:Order(amout < 100)
+    then
+        $order.setScore(99);
+        System.out.println("成功匹配到规则：过期日期已过（不应出现）");
+end
