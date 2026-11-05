@@ -14,9 +14,15 @@ public class TestController {
     @Autowired
     private TestService testService;
 
-    @GetMapping("testLock")
+    @GetMapping("testLocalLock")
     public Result testLock() {
         testService.testLock();
+        return Result.ok();
+    }
+
+    @GetMapping("testDistributedLock")
+    public Result testDistributedLock() {
+        testService.testDistributedLock();
         return Result.ok();
     }
 }
