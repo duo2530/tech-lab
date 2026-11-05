@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>drools</module>
+        <module>distributed-lock</module>
     </modules>
 
     <properties>

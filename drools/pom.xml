@@ -15,6 +15,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <description>规则引擎</description>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
