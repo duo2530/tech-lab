@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -29,9 +30,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * </ol>
  * 前置条件：本机 Redis(application.yaml 中配置) 已启动。运行约 20s。
  * 本测试断言"问题确实发生"，修复后（校验 value + Lua 原子删除）该断言应失败。
- * 
+ * <p>
  * 某次运行结果如下：
- * 
+ * <p>
  * ===== 时间线 =====
  * 14:57:41.880539300 index1 获取到锁 value=index1-7dcd9d32-22c2-4fe7-a8e9-5b5810506b0a
  * 14:57:44.852268500 index2 获取到锁 value=index2-372c8887-37ac-4710-aace-220535d76ff8
@@ -57,7 +58,7 @@ class MisDeleteLockTest {
     private final List<String> timeline = new CopyOnWriteArrayList<>();
     private final AtomicInteger misDeleteCount = new AtomicInteger();
     private final AtomicInteger skippedDeleteCount = new AtomicInteger();
-    private final AtomicInteger running =new AtomicInteger();
+    private final AtomicInteger running = new AtomicInteger();
     private final AtomicInteger maxConcurrent = new AtomicInteger();
 
     @Test
@@ -169,7 +170,7 @@ class MisDeleteLockTest {
      * 局限：
      * 1. 只防误删，不保证互斥。业务 7s > TTL 3s，锁仍会提前过期，多个线程仍会同时执行业务。
      * 2. "get 比较 + del"不是原子操作，get 之后 del 之前锁恰好过期并被他人获取，仍会误删。
-     *    彻底解决需用 Lua 脚本把比较和删除合成一步。
+     * 彻底解决需用 Lua 脚本把比较和删除合成一步。
      */
     private void runBusiness2(String name) throws InterruptedException {
         String myValue = name + "-" + UUID.randomUUID();
@@ -182,8 +183,29 @@ class MisDeleteLockTest {
 
         int now = running.incrementAndGet();
         maxConcurrent.accumulateAndGet(now, Math::max);
+
         try {
+            Thread watchDog = new Thread(() -> {
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    String current = redisTemplate.opsForValue().get(LOCK_KEY);
+                    boolean mine = myValue.equals(current);
+                    if (mine) {
+                        log("看门狗给 %s 的锁 value=%s 续期", name, myValue);
+                        redisTemplate.opsForValue().setIfAbsent(LOCK_KEY, myValue, LOCK_TTL_SECONDS, TimeUnit.SECONDS);
+                    } else {
+                        break;
+                    }
+                }
+            });
+            watchDog.start();
+            
             Thread.sleep(BUSINESS_MILLIS); // 业务耗时 7s > TTL 3s
+
         } finally {
             running.decrementAndGet();
         }
@@ -198,6 +220,7 @@ class MisDeleteLockTest {
             return;
         }
         redisTemplate.delete(LOCK_KEY); // 校验过是自己的 UUID 才删
+
     }
 
     private void log(String fmt, Object... args) {
