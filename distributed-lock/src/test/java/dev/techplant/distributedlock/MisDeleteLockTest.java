@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -161,16 +162,19 @@ class MisDeleteLockTest {
         System.out.println("同时持有\"锁\"执行业务的最大线程数: " + maxConcurrent.get());
 
         assertEquals(0, misDeleteCount.get(), "加 UUID 校验后，不应再误删他人的锁");
-        assertTrue(skippedDeleteCount.get() > 0, "应有线程发现锁已不是自己的而放弃 del");
+        assertEquals(0, skippedDeleteCount.get(), "有看门狗续期，锁不会提前过期，不应有线程需要跳过 del");
+        assertEquals(1, maxConcurrent.get(), "有看门狗续期，任意时刻只应有一个线程持有锁执行业务");
     }
 
     /**
-     * 解决方案：加锁 value 用 UUID，释放前先比较 value 是否是自己的，是才 del。
+     * 解决方案：加锁 value 用 UUID + 看门狗续期。
      * <p>
-     * 局限：
-     * 1. 只防误删，不保证互斥。业务 7s > TTL 3s，锁仍会提前过期，多个线程仍会同时执行业务。
-     * 2. "get 比较 + del"不是原子操作，get 之后 del 之前锁恰好过期并被他人获取，仍会误删。
-     * 彻底解决需用 Lua 脚本把比较和删除合成一步。
+     * 1. 拿到锁后立刻启动看门狗，每 TTL/3 检查一次，仍是自己的锁就把 TTL 重置为 3s。
+     * 业务执行期间锁不会过期，别人抢不到，互斥得以保证。
+     * 2. 续期用 Lua 脚本把"比较 value + 重置 TTL"合成一步，避免给别人的锁续期。
+     * 3. 业务结束（含异常）先停看门狗，再校验 UUID 后 del。
+     * <p>
+     * 进程崩溃时看门狗随之停止，锁在 TTL 后自动过期，不会死锁。
      */
     private void runBusiness2(String name) throws InterruptedException {
         String myValue = name + "-" + UUID.randomUUID();
@@ -183,31 +187,13 @@ class MisDeleteLockTest {
 
         int now = running.incrementAndGet();
         maxConcurrent.accumulateAndGet(now, Math::max);
-
+        Thread watchDog = startWatchDog(name, myValue); // 拿到锁立刻启动，而不是业务结束后
         try {
-            Thread watchDog = new Thread(() -> {
-                while (true) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                    String current = redisTemplate.opsForValue().get(LOCK_KEY);
-                    boolean mine = myValue.equals(current);
-                    if (mine) {
-                        log("看门狗给 %s 的锁 value=%s 续期", name, myValue);
-                        redisTemplate.opsForValue().setIfAbsent(LOCK_KEY, myValue, LOCK_TTL_SECONDS, TimeUnit.SECONDS);
-                    } else {
-                        break;
-                    }
-                }
-            });
-            watchDog.start();
-            
-            Thread.sleep(BUSINESS_MILLIS); // 业务耗时 7s > TTL 3s
-
+            Thread.sleep(BUSINESS_MILLIS); // 业务耗时 7s > TTL 3s，靠看门狗续期
         } finally {
             running.decrementAndGet();
+            watchDog.interrupt(); // 无论业务是否异常都要停看门狗
+            watchDog.join();
         }
 
         String current = redisTemplate.opsForValue().get(LOCK_KEY);
@@ -220,7 +206,24 @@ class MisDeleteLockTest {
             return;
         }
         redisTemplate.delete(LOCK_KEY); // 校验过是自己的 UUID 才删
+    }
 
+
+    private Thread startWatchDog(String name, String myValue) {
+        Thread t = new Thread(() -> {
+            try {
+                while (true) {
+                    Thread.sleep(LOCK_TTL_SECONDS * 1000 / 3); // 间隔取 TTL 的 1/3，留出重试余量
+                    redisTemplate.opsForValue().getAndExpire(LOCK_KEY, LOCK_TTL_SECONDS, TimeUnit.SECONDS);
+                    log("看门狗给 %s 的锁 value=%s 续期", name, myValue);
+                }
+            } catch (InterruptedException e) {
+                // 业务结束，正常退出
+            }
+        }, "watchdog-" + name);
+        t.setDaemon(true);
+        t.start();
+        return t;
     }
 
     private void log(String fmt, Object... args) {
