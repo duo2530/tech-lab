@@ -1,0 +1,141 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------< dev.techplant:rabbitmq-lab-01-order-routing >-------------
+[INFO] Building rabbitmq-lab-01-order-routing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ rabbitmq-lab-01-order-routing ---
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ rabbitmq-lab-01-order-routing ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing\target\classes
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ rabbitmq-lab-01-order-routing ---
+[INFO] skip non existing resourceDirectory D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ rabbitmq-lab-01-order-routing ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ rabbitmq-lab-01-order-routing ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running dev.techplant.rabbitmq.lab01.AsyncDecouplingTest
+00:48:28.914 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [AsyncDecouplingTest]: using SpringBootContextLoader
+00:48:28.917 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [dev.techplant.rabbitmq.lab01.AsyncDecouplingTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+00:48:28.917 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [dev.techplant.rabbitmq.lab01.AsyncDecouplingTest]: AsyncDecouplingTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:48:28.935 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using ContextCustomizers for test class [AsyncDecouplingTest]: [ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
+00:48:28.995 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing\target\classes\dev\techplant\rabbitmq\lab01\Lab01Application.class]
+00:48:28.996 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration dev.techplant.rabbitmq.lab01.Lab01Application for test class dev.techplant.rabbitmq.lab01.AsyncDecouplingTest
+00:48:29.071 [main] DEBUG org.springframework.test.context.util.TestContextSpringFactoriesUtils -- Skipping candidate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] due to a missing dependency. Specify custom TestExecutionListener classes or make the default TestExecutionListener classes and their required dependencies available. Offending class: [jakarta/servlet/ServletContext]
+00:48:29.081 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using TestExecutionListeners for test class [AsyncDecouplingTest]: [DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
+00:48:29.083 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [AsyncDecouplingTest], class annotated with @DirtiesContext [false] with mode [null]
+00:48:29.099 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener -- Performing dependency injection for test class dev.techplant.rabbitmq.lab01.AsyncDecouplingTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2026-11-27T00:48:29.382+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : Starting AsyncDecouplingTest using Java 17.0.12 with PID 50292 (started by liujie in D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing)
+2026-11-27T00:48:29.383+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : No active profile set, falling back to 1 default profile: "default"
+2026-11-27T00:48:30.212+08:00  INFO 50292 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-27T00:48:30.256+08:00  INFO 50292 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#378cfecf:0/SimpleConnection@6a756082 [delegate=amqp://lab@127.0.0.1:5672/, localPort=13811]
+2026-11-27T00:48:30.322+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : Started AsyncDecouplingTest in 1.205 seconds (process running for 1.868)
+2026-11-27T00:48:31.797+08:00  INFO 50292 --- [ntContainer#1-1] d.t.r.l.consumer.DownstreamConsumers     : [notify] order ASYNC-91164ecb-f63d-497e-a35b-c4ade0599a6a processed
+2026-11-27T00:48:32.001+08:00  INFO 50292 --- [ntContainer#0-1] d.t.r.l.consumer.DownstreamConsumers     : [points] order ASYNC-91164ecb-f63d-497e-a35b-c4ade0599a6a processed
+2026-11-27T00:48:32.021+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : [timing] downstream delays: notify=300ms points=500ms
+2026-11-27T00:48:32.021+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : [timing] sync order total          = 823 ms
+2026-11-27T00:48:32.021+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : [timing] async publish returned    = 33 ms
+2026-11-27T00:48:32.021+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : [timing] async broker confirmed    = 36 ms
+2026-11-27T00:48:32.021+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : [timing] async consumers all done  = 574 ms (after publish start)
+2026-11-27T00:48:32.021+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : [timing] gap (consume done - publish returned) = 541 ms
+2026-11-27T00:48:32.393+08:00  INFO 50292 --- [ntContainer#1-1] d.t.r.l.consumer.DownstreamConsumers     : [notify] order FAULT-94bcf304-39d6-4d62-b91d-d9a725090b78 processed
+2026-11-27T00:48:32.595+08:00  WARN 50292 --- [ntContainer#0-1] d.t.r.l.consumer.DownstreamConsumers     : [points] order FAULT-94bcf304-39d6-4d62-b91d-d9a725090b78 FAILED: injected fault in points for order FAULT-94bcf304-39d6-4d62-b91d-d9a725090b78
+2026-11-27T00:48:32.596+08:00  WARN 50292 --- [ntContainer#0-1] s.a.r.l.ConditionalRejectingErrorHandler : Execution of Rabbit message listener failed.
+
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void dev.techplant.rabbitmq.lab01.consumer.DownstreamConsumers.onPoints(dev.techplant.rabbitmq.lab01.model.OrderEvent)' threw exception
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:272) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:210) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:149) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1718) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1637) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1625) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1616) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListenerAndHandleException(AbstractMessageListenerContainer.java:1561) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.lambda$executeListener$8(AbstractMessageListenerContainer.java:1540) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at io.micrometer.observation.Observation.observe(Observation.java:492) ~[micrometer-observation-1.10.5.jar:1.10.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1540) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:1001) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:948) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1326) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1232) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: org.springframework.amqp.AmqpRejectAndDontRequeueException: injected fault in points for order FAULT-94bcf304-39d6-4d62-b91d-d9a725090b78
+	at dev.techplant.rabbitmq.lab01.consumer.DownstreamConsumers.handle(DownstreamConsumers.java:50) ~[classes/:na]
+	at dev.techplant.rabbitmq.lab01.consumer.DownstreamConsumers.onPoints(DownstreamConsumers.java:38) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-6.0.7.jar:6.0.7]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-6.0.7.jar:6.0.7]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:75) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:263) ~[spring-rabbit-3.0.3.jar:3.0.3]
+	... 15 common frames omitted
+Caused by: java.lang.IllegalStateException: injected fault in points for order FAULT-94bcf304-39d6-4d62-b91d-d9a725090b78
+	at dev.techplant.rabbitmq.lab01.service.DownstreamSimulator.process(DownstreamSimulator.java:49) ~[classes/:na]
+	at dev.techplant.rabbitmq.lab01.service.DownstreamSimulator.grantPoints(DownstreamSimulator.java:30) ~[classes/:na]
+	at dev.techplant.rabbitmq.lab01.consumer.DownstreamConsumers.handle(DownstreamConsumers.java:43) ~[classes/:na]
+	... 24 common frames omitted
+
+2026-11-27T00:48:32.610+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : [fault] publish returned and broker acked = true, downstream records = [Record[service=notify, status=SUCCESS, completedAtNanos=49062331286700], Record[service=points, status=FAILED, completedAtNanos=49062533366800]]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.794 s - in dev.techplant.rabbitmq.lab01.AsyncDecouplingTest
+[INFO] Running dev.techplant.rabbitmq.lab01.ExchangeRoutingTest
+2026-11-27T00:48:32.618+08:00  INFO 50292 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [dev.techplant.rabbitmq.lab01.ExchangeRoutingTest]: ExchangeRoutingTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-27T00:48:32.619+08:00  INFO 50292 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration dev.techplant.rabbitmq.lab01.Lab01Application for test class dev.techplant.rabbitmq.lab01.ExchangeRoutingTest
+2026-11-27T00:48:32.682+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=direct detail=order.paid expected=[lab01.route.direct.paid] actual=[lab01.route.direct.paid]
+2026-11-27T00:48:32.732+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=direct detail=order.cancelled expected=[lab01.route.direct.cancelled] actual=[lab01.route.direct.cancelled]
+2026-11-27T00:48:32.770+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=direct detail=order.paid.extra expected=[] actual=[]
+2026-11-27T00:48:32.813+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=direct detail=ORDER.PAID expected=[] actual=[]
+2026-11-27T00:48:32.873+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=fanout detail= expected=[lab01.route.fanout.points, lab01.route.fanout.notify, lab01.route.fanout.audit] actual=[lab01.route.fanout.notify, lab01.route.fanout.points, lab01.route.fanout.audit]
+2026-11-27T00:48:32.924+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=fanout detail=order.paid expected=[lab01.route.fanout.points, lab01.route.fanout.notify, lab01.route.fanout.audit] actual=[lab01.route.fanout.notify, lab01.route.fanout.points, lab01.route.fanout.audit]
+2026-11-27T00:48:32.986+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=fanout detail=anything.at.all expected=[lab01.route.fanout.points, lab01.route.fanout.notify, lab01.route.fanout.audit] actual=[lab01.route.fanout.notify, lab01.route.fanout.points, lab01.route.fanout.audit]
+2026-11-27T00:48:33.053+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order.cn.paid expected=[lab01.route.topic.cn, lab01.route.topic.audit, lab01.route.topic.paid] actual=[lab01.route.topic.paid, lab01.route.topic.cn, lab01.route.topic.audit]
+2026-11-27T00:48:33.101+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order.us.paid expected=[lab01.route.topic.audit, lab01.route.topic.paid] actual=[lab01.route.topic.paid, lab01.route.topic.audit]
+2026-11-27T00:48:33.131+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order.cn.created expected=[lab01.route.topic.audit, lab01.route.topic.cn] actual=[lab01.route.topic.cn, lab01.route.topic.audit]
+2026-11-27T00:48:33.161+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order.cn.paid.refund expected=[lab01.route.topic.audit] actual=[lab01.route.topic.audit]
+2026-11-27T00:48:33.185+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order expected=[lab01.route.topic.audit] actual=[lab01.route.topic.audit]
+2026-11-27T00:48:33.205+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=payment.cn.paid expected=[] actual=[]
+2026-11-27T00:48:33.235+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={vip=true, channel=app} expected=[lab01.route.headers.all] actual=[lab01.route.headers.all]
+2026-11-27T00:48:33.264+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={channel=app, region=cn, vip=true} expected=[lab01.route.headers.any, lab01.route.headers.all] actual=[lab01.route.headers.all, lab01.route.headers.any]
+2026-11-27T00:48:33.292+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={channel=web} expected=[lab01.route.headers.any] actual=[lab01.route.headers.any]
+2026-11-27T00:48:33.315+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={region=cn} expected=[lab01.route.headers.any] actual=[lab01.route.headers.any]
+2026-11-27T00:48:33.335+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={vip=true} expected=[] actual=[]
+2026-11-27T00:48:33.355+08:00  INFO 50292 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={channel=app, region=us, vip=false} expected=[] actual=[]
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.716 s - in dev.techplant.rabbitmq.lab01.ExchangeRoutingTest
+2026-11-27T00:48:33.364+08:00  INFO 50292 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-27T00:48:33.365+08:00  INFO 50292 --- [ntContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-27T00:48:33.411+08:00  INFO 50292 --- [ntContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-11-27T00:48:33.610+08:00  INFO 50292 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-11-27T00:48:33.611+08:00  INFO 50292 --- [ionShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2026-11-27T00:48:33.611+08:00  INFO 50292 --- [ionShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.811 s
+[INFO] Finished at: 2026-11-27T00:48:34+08:00
+[INFO] ------------------------------------------------------------------------

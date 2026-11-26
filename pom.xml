@@ -11,6 +11,7 @@
     <modules>
         <module>drools</module>
         <module>distributed-lock</module>
+        <module>rabbitmq/lab-01-order-routing</module>
     </modules>
 
     <properties>

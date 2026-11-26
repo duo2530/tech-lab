@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: rabbitmq-lab-01-order-routing
+  rabbitmq:
+    host: ${rabbitmq.host:localhost}
+    port: ${rabbitmq.port:5672}
+    username: lab
+    password: lab
+    # 使用 Publisher Confirm 观察 Broker 是否接收，注意它不代表消费或业务成功
+    publisher-confirm-type: correlated
+    listener:
+      simple:
+        # 消费失败不重新入队，避免毒性消息无限循环（死信处理见后续实验）
+        default-requeue-rejected: false
+
+lab:
+  downstream:
+    # 模拟下游处理耗时（毫秒）
+    notify-delay-ms: 300
+    points-delay-ms: 500
