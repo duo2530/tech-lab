@@ -1,0 +1,279 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------< dev.techplant:rabbitmq-lab-01-order-routing >-------------
+[INFO] Building rabbitmq-lab-01-order-routing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ rabbitmq-lab-01-order-routing ---
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ rabbitmq-lab-01-order-routing ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ rabbitmq-lab-01-order-routing ---
+[INFO] skip non existing resourceDirectory D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ rabbitmq-lab-01-order-routing ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ rabbitmq-lab-01-order-routing ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running dev.techplant.rabbitmq.lab01.AsyncDecouplingTest
+00:48:06.082 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [AsyncDecouplingTest]: using SpringBootContextLoader
+00:48:06.086 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [dev.techplant.rabbitmq.lab01.AsyncDecouplingTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+00:48:06.086 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [dev.techplant.rabbitmq.lab01.AsyncDecouplingTest]: AsyncDecouplingTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:48:06.111 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using ContextCustomizers for test class [AsyncDecouplingTest]: [ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
+00:48:06.173 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing\target\classes\dev\techplant\rabbitmq\lab01\Lab01Application.class]
+00:48:06.175 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration dev.techplant.rabbitmq.lab01.Lab01Application for test class dev.techplant.rabbitmq.lab01.AsyncDecouplingTest
+00:48:06.252 [main] DEBUG org.springframework.test.context.util.TestContextSpringFactoriesUtils -- Skipping candidate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] due to a missing dependency. Specify custom TestExecutionListener classes or make the default TestExecutionListener classes and their required dependencies available. Offending class: [jakarta/servlet/ServletContext]
+00:48:06.267 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using TestExecutionListeners for test class [AsyncDecouplingTest]: [DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
+00:48:06.267 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [AsyncDecouplingTest], class annotated with @DirtiesContext [false] with mode [null]
+00:48:06.281 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener -- Performing dependency injection for test class dev.techplant.rabbitmq.lab01.AsyncDecouplingTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2026-11-27T00:48:06.544+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : Starting AsyncDecouplingTest using Java 17.0.12 with PID 25956 (started by liujie in D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing)
+2026-11-27T00:48:06.545+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : No active profile set, falling back to 1 default profile: "default"
+2026-11-27T00:48:07.506+08:00  INFO 25956 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-27T00:48:07.574+08:00  INFO 25956 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#36681447:0/SimpleConnection@30b975ad [delegate=amqp://lab@127.0.0.1:5672/, localPort=13807]
+2026-11-27T00:48:07.823+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.AsyncDecouplingTest   : Started AsyncDecouplingTest in 1.517 seconds (process running for 2.347)
+[ERROR] Tests run: 2, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 3.096 s <<< FAILURE! - in dev.techplant.rabbitmq.lab01.AsyncDecouplingTest
+[ERROR] asyncPublishReturnsBeforeDownstreamFinishes  Time elapsed: 1.157 s  <<< ERROR!
+java.lang.IllegalArgumentException: SimpleMessageConverter only supports String, byte[] and Serializable payloads, received: dev.techplant.rabbitmq.lab01.model.OrderEvent
+	at dev.techplant.rabbitmq.lab01.AsyncDecouplingTest.asyncPublishReturnsBeforeDownstreamFinishes(AsyncDecouplingTest.java:64)
+
+[ERROR] publishAckedDoesNotMeanBusinessSucceeded  Time elapsed: 0.043 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting code not to raise a throwable but caught
+  "java.lang.IllegalArgumentException: SimpleMessageConverter only supports String, byte[] and Serializable payloads, received: dev.techplant.rabbitmq.lab01.model.OrderEvent
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.createMessage(SimpleMessageConverter.java:134)
+	at org.springframework.amqp.support.converter.AbstractMessageConverter.createMessage(AbstractMessageConverter.java:88)
+	at org.springframework.amqp.support.converter.AbstractMessageConverter.toMessage(AbstractMessageConverter.java:70)
+	at org.springframework.amqp.support.converter.AbstractMessageConverter.toMessage(AbstractMessageConverter.java:58)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.convertMessageIfNecessary(RabbitTemplate.java:1876)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.convertAndSend(RabbitTemplate.java:1182)
+	at dev.techplant.rabbitmq.lab01.service.OrderService.placeOrderAsync(OrderService.java:45)
+	at dev.techplant.rabbitmq.lab01.AsyncDecouplingTest.lambda$publishAckedDoesNotMeanBusinessSucceeded$0(AsyncDecouplingTest.java:99)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:63)
+	at org.assertj.core.api.AssertionsForClassTypes.catchThrowable(AssertionsForClassTypes.java:892)
+	at org.assertj.core.api.AssertionsForClassTypes.assertThatCode(AssertionsForClassTypes.java:863)
+	at org.assertj.core.api.Assertions.assertThatCode(Assertions.java:1287)
+	at dev.techplant.rabbitmq.lab01.AsyncDecouplingTest.publishAckedDoesNotMeanBusinessSucceeded(AsyncDecouplingTest.java:99)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:220)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:188)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:202)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:181)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:150)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+"
+	at dev.techplant.rabbitmq.lab01.AsyncDecouplingTest.publishAckedDoesNotMeanBusinessSucceeded(AsyncDecouplingTest.java:99)
+
+[INFO] Running dev.techplant.rabbitmq.lab01.ExchangeRoutingTest
+2026-11-27T00:48:09.033+08:00  INFO 25956 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [dev.techplant.rabbitmq.lab01.ExchangeRoutingTest]: ExchangeRoutingTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-27T00:48:09.034+08:00  INFO 25956 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration dev.techplant.rabbitmq.lab01.Lab01Application for test class dev.techplant.rabbitmq.lab01.ExchangeRoutingTest
+2026-11-27T00:48:09.106+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=direct detail=order.paid expected=[lab01.route.direct.paid] actual=[lab01.route.direct.paid]
+2026-11-27T00:48:09.160+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=direct detail=order.cancelled expected=[lab01.route.direct.cancelled] actual=[lab01.route.direct.cancelled]
+2026-11-27T00:48:09.193+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=direct detail=order.paid.extra expected=[] actual=[]
+2026-11-27T00:48:09.221+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=direct detail=ORDER.PAID expected=[] actual=[]
+2026-11-27T00:48:09.247+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=fanout detail= expected=[lab01.route.fanout.audit, lab01.route.fanout.points, lab01.route.fanout.notify] actual=[lab01.route.fanout.notify, lab01.route.fanout.points, lab01.route.fanout.audit]
+2026-11-27T00:48:09.270+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=fanout detail=order.paid expected=[lab01.route.fanout.audit, lab01.route.fanout.points, lab01.route.fanout.notify] actual=[lab01.route.fanout.notify, lab01.route.fanout.points, lab01.route.fanout.audit]
+2026-11-27T00:48:09.292+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=fanout detail=anything.at.all expected=[lab01.route.fanout.audit, lab01.route.fanout.points, lab01.route.fanout.notify] actual=[lab01.route.fanout.notify, lab01.route.fanout.points, lab01.route.fanout.audit]
+2026-11-27T00:48:09.315+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order.cn.paid expected=[lab01.route.topic.cn, lab01.route.topic.audit, lab01.route.topic.paid] actual=[lab01.route.topic.paid, lab01.route.topic.cn, lab01.route.topic.audit]
+2026-11-27T00:48:09.337+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order.us.paid expected=[lab01.route.topic.audit, lab01.route.topic.paid] actual=[lab01.route.topic.paid, lab01.route.topic.audit]
+2026-11-27T00:48:09.358+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order.cn.created expected=[lab01.route.topic.audit, lab01.route.topic.cn] actual=[lab01.route.topic.cn, lab01.route.topic.audit]
+2026-11-27T00:48:09.381+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order.cn.paid.refund expected=[lab01.route.topic.audit] actual=[lab01.route.topic.audit]
+2026-11-27T00:48:09.404+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=order expected=[lab01.route.topic.audit] actual=[lab01.route.topic.audit]
+2026-11-27T00:48:09.426+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=topic detail=payment.cn.paid expected=[] actual=[]
+2026-11-27T00:48:09.450+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={channel=app, vip=true} expected=[lab01.route.headers.all] actual=[lab01.route.headers.all]
+2026-11-27T00:48:09.478+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={vip=true, channel=app, region=cn} expected=[lab01.route.headers.any, lab01.route.headers.all] actual=[lab01.route.headers.all, lab01.route.headers.any]
+2026-11-27T00:48:09.502+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={channel=web} expected=[lab01.route.headers.any] actual=[lab01.route.headers.any]
+2026-11-27T00:48:09.522+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={region=cn} expected=[lab01.route.headers.any] actual=[lab01.route.headers.any]
+2026-11-27T00:48:09.543+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={vip=true} expected=[] actual=[]
+2026-11-27T00:48:09.562+08:00  INFO 25956 --- [           main] d.t.rabbitmq.lab01.ExchangeRoutingTest   : [routing] type=headers detail={vip=false, channel=app, region=us} expected=[] actual=[]
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.504 s - in dev.techplant.rabbitmq.lab01.ExchangeRoutingTest
+2026-11-27T00:48:09.571+08:00  INFO 25956 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-27T00:48:09.572+08:00  INFO 25956 --- [ntContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-27T00:48:09.838+08:00  INFO 25956 --- [ntContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-11-27T00:48:09.838+08:00  INFO 25956 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-11-27T00:48:09.839+08:00  INFO 25956 --- [ionShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2026-11-27T00:48:09.839+08:00  INFO 25956 --- [ionShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   AsyncDecouplingTest.publishAckedDoesNotMeanBusinessSucceeded:99 
+Expecting code not to raise a throwable but caught
+  "java.lang.IllegalArgumentException: SimpleMessageConverter only supports String, byte[] and Serializable payloads, received: dev.techplant.rabbitmq.lab01.model.OrderEvent
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.createMessage(SimpleMessageConverter.java:134)
+	at org.springframework.amqp.support.converter.AbstractMessageConverter.createMessage(AbstractMessageConverter.java:88)
+	at org.springframework.amqp.support.converter.AbstractMessageConverter.toMessage(AbstractMessageConverter.java:70)
+	at org.springframework.amqp.support.converter.AbstractMessageConverter.toMessage(AbstractMessageConverter.java:58)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.convertMessageIfNecessary(RabbitTemplate.java:1876)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.convertAndSend(RabbitTemplate.java:1182)
+	at dev.techplant.rabbitmq.lab01.service.OrderService.placeOrderAsync(OrderService.java:45)
+	at dev.techplant.rabbitmq.lab01.AsyncDecouplingTest.lambda$publishAckedDoesNotMeanBusinessSucceeded$0(AsyncDecouplingTest.java:99)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:63)
+	at org.assertj.core.api.AssertionsForClassTypes.catchThrowable(AssertionsForClassTypes.java:892)
+	at org.assertj.core.api.AssertionsForClassTypes.assertThatCode(AssertionsForClassTypes.java:863)
+	at org.assertj.core.api.Assertions.assertThatCode(Assertions.java:1287)
+	at dev.techplant.rabbitmq.lab01.AsyncDecouplingTest.publishAckedDoesNotMeanBusinessSucceeded(AsyncDecouplingTest.java:99)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:220)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:188)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:202)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:181)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:150)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+"
+[ERROR] Errors: 
+[ERROR]   AsyncDecouplingTest.asyncPublishReturnsBeforeDownstreamFinishes:64 » IllegalArgument
+[INFO] 
+[ERROR] Tests run: 21, Failures: 1, Errors: 1, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.575 s
+[INFO] Finished at: 2026-11-27T00:48:10+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project rabbitmq-lab-01-order-routing: There are test failures.
+[ERROR] 
+[ERROR] Please refer to D:\Projects\IDEAProjects\tech-lab\rabbitmq\lab-01-order-routing\target\surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

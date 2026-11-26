@@ -1,0 +1,19 @@
+# RabbitMQ Lab 01 实验环境：单节点 RabbitMQ（固定版本）
+# 启动: docker compose up -d --wait    清理: docker compose down -v
+services:
+  rabbitmq:
+    image: rabbitmq:4.1.4-management
+    container_name: lab01-rabbitmq
+    hostname: lab01-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: lab
+      RABBITMQ_DEFAULT_PASS: lab
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # Management UI: http://localhost:15672 (lab / lab)
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 10s
+      retries: 20
+      start_period: 10s
